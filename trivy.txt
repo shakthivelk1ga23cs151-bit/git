@@ -1,0 +1,35 @@
+https://github.com/aquasecurity/trivy/releases/tag/v0.69.2
+
+trivy fs --security-checks secret,config,vuln .
+
+https://github.com/aquasecurity/trivy/blob/main/contrib/html.tpl
+
+Click “Raw” → Right-click → “Save As” → Save as html.tpl. inside of Trivy Folder
+
+Run in CLI Mode to generate the Report Summary in Trivy Folder
+
+2.6 fullscan (vulnerabilities, misconfigurations and secrets)
+trivy fs --format template --template "@html.tpl" -o fullscan-report.html --security-checks
+secret,config,vuln .
+2.7 Individual Scan for secret
+trivy fs --format template --template "@html.tpl" -o secret-report.html --security-checks secret .
+2.8 Individual Scan for misconfigurations
+trivy fs --format template --template "@html.tpl" -o misscon-report.html --security-checks config .
+2.9 Individual Scan for vulnerabilities
+trivy fs --format template --template "@html.tpl" -o vuln-report.html --security-checks vuln .
+
+3 Scan a Docker image
+3.1 Run Docker Desktop
+3.2 Build the Image using CMD Ex: docker build -t trivy .
+Docker image is: trivy:latest
+3.3 full scan (vulnerabilities, misconfigurations and secrets)
+trivy image --format template --template "@html.tpl" -o docfullscan.html --scanners vuln,secret,misconfig
+trivy:latest
+3.4 Individual Scan for secret
+trivy image --format template --template "@html.tpl" -o docsec.html --scannerssecret trivy:latest
+3.5 Individual Scan for misconfigurations
+trivy image --formattemplate --template "@html.tpl" -o docmiss.html --scanners misconfig trivy:latest
+3.6 Individual Scan for vulnerabilities
+trivy image --formattemplate --template "@html.tpl" -o docvul.html --scanners vuln trivy:latest
+
+trivy repo --scanners vuln,misconfig,secret https://github.com/aquasecurity/trivy-ci-test
