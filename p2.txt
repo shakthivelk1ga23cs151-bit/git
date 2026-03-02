@@ -1,0 +1,6 @@
+Learning Git and GitHub
+
+Learning merging concepts in Git 
+
+P2 is created in feature-branch
+
