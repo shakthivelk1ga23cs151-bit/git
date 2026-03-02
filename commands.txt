@@ -1,0 +1,11 @@
+git init
+git add f1.txt
+git commit -m "Created file file in main branch"
+git checkout -b feature-branch
+git remote add origin https://github.com/shakthivelk1ga23cs151-bit/git.git
+git push -u origin main
+git branch 
+git push --set-upstream origin feature-branch
+git checkout main
+git merge feature-branch
+git push
