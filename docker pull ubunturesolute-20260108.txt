@@ -7,3 +7,11 @@ docker build -t react-docker .
 docker run -p 5173:5173 react-docker
 docker run -p 5173:5173 -v "${pwd}:/app" -v /app/node_modules react-docker
 docker ps
+
+docker images
+docker system prune -a
+docker container prune
+docker rm container_id
+docker ps -a
+docker stop <container_id>
+docker rmi <image_id>
